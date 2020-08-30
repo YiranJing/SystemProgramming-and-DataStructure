@@ -1,0 +1,3 @@
+The command ./huffman sample-input.txt frequency 98 (executed in the same directory as sample-input.txt) requests you print the frequency of the byte 98 (0x62) in sample-input.txt.
+
+Byte 0x62 occurs once in sample-input.txt, so you should print out "1" to standard output.

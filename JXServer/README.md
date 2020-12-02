@@ -86,7 +86,7 @@ However, the current method might lead to poor performance when program receives
 ## Data deduplication
 
 As mentioned above, if one client send the same requests with the same sessionID concurrently, only one connection can get the response. To handle this, we store all currently active sessions in a dynamic array.
-
+```c
     /*Dynamic array to records the sessions of one clinet */
     struct session {
         struct request *requests; /* array to record concurrent sessions */
@@ -94,6 +94,8 @@ As mentioned above, if one client send the same requests with the same sessionID
         uint64_t size; /* current length of sessions */
         pthread_mutex_t lock; /* handle multiplex */
     };
+```
+
 1. When the new request comes, we firstly check if the same request active already. If yes, send empty message back. Otherwise, append the new sessions to array. 
 2. After send back the message to client, remove sessionID from the list. 
 
@@ -109,12 +111,12 @@ Steps of encoding calculation:
 2. Create a node for each possible input symbols, with value equal to the frequency.  
 3. Create a `mini_heap`, in which all nodes sorted by frequency.
 4. Build huffman Tree:
-
-       -  pop two nodes with smallest frequency from heap
-       -  create a new node and insert to the binary tree 
-       -  recurtively build huff tree until only one node left
+   -  pop two nodes with smallest frequency from heap
+   -  create a new node and insert to the binary tree 
+   -  recurtively build huff tree until only one node left
 
 5. Save bitcode and the start index of each node (in `compress_dict` as bit array) for decoding. Also save the root of Huffman tree for compression purpose.
+```c    
     #define DICT_SIZE (256)
     struct compress_dict {
         struct binary_tree *tree; // root of Huffman tree
@@ -132,6 +134,7 @@ Steps of encoding calculation:
     struct binary_tree {
         struct node_tree *root;
     };
+```
 ## Lossless Compression
 
 see `encode_msg` function in [server.c](https://github.com/YiranJing/SystemProgramming-and-DataStructure/blob/master/JXServer/server.c)

@@ -1,7 +1,7 @@
 # XJServer
-COMP2017 assignment 3
-Date: June 2020
-Author: Yiran Jing
+- COMP2017 assignment 3
+- Date: June 2020
+- Author: Yiran Jing
 
 A networked server (“JXServer”) that sends files to clients in response to requests. My server is responsible for creating a "listening" TCP socket. In this project, server use standard TCP with IPv4. Both client and server endpoints are defined by an IP address (32 bit unsigned integer) as well as a TCP port number (16 bit unsigned integer)
 
@@ -19,7 +19,7 @@ this file will be arranged in the following layout from the start:
 2. [Message Functionality](https://www.dropbox.com/scl/fi/odmpptsd12rc5kdurjndr/Untitled-6.paper?dl=0&rlkey=0bz2wegpxdeda2tjh7wwnhd7t#:h2=Message-layout)
 3. [Data deduplication](https://www.dropbox.com/scl/fi/odmpptsd12rc5kdurjndr/Untitled-6.paper?dl=0&rlkey=0bz2wegpxdeda2tjh7wwnhd7t#:uid=790198515502176518142135&h2=Data-deduplication)
 4. [Concurrent request through thread pool](https://www.dropbox.com/scl/fi/odmpptsd12rc5kdurjndr/Untitled-6.paper?dl=0&rlkey=0bz2wegpxdeda2tjh7wwnhd7t#:uid=273701364310380715848740&h2=Concurrent-requests-using-thre)
-5. [**Huffman Coding and Compression**](https://www.dropbox.com/scl/fi/odmpptsd12rc5kdurjndr/Untitled-6.paper?dl=0&rlkey=0bz2wegpxdeda2tjh7wwnhd7t#:uid=982575259929877457368713&h2=Huffman-Coding-and-Compression) ****
+5. [**Huffman Coding and Compression**](https://www.dropbox.com/scl/fi/odmpptsd12rc5kdurjndr/Untitled-6.paper?dl=0&rlkey=0bz2wegpxdeda2tjh7wwnhd7t#:uid=982575259929877457368713&h2=Huffman-Coding-and-Compression)
 6. [Lossless compression](https://www.dropbox.com/scl/fi/odmpptsd12rc5kdurjndr/Untitled-6.paper?dl=0&rlkey=0bz2wegpxdeda2tjh7wwnhd7t#:uid=521688136864916273861424&h2=Lossless-Compression)
 7. [Decompression](https://www.dropbox.com/scl/fi/odmpptsd12rc5kdurjndr/Untitled-6.paper?dl=0&rlkey=0bz2wegpxdeda2tjh7wwnhd7t#:uid=896693758375522789853461&h2=Decompression)
 
@@ -44,20 +44,20 @@ Moreover, the payload length of the sent data is in big-endian. To get the corre
 
 ## Message Functionality
 
-**Error functionality**
+- **Error functionality**
 when receive unknown type message, send error message back and close connection
-**Echo functionality**
-**Directory listing**
-**File size query**
-**Shutdown command**
-
-**Retrieve file**
+- **Echo functionality**
+- **Directory listing**
+- **File size query**
+- **Shutdown command**
+- **Retrieve file**
 The payload will consist of the following structure:
-
     - 4 bytes - `session ID` for this request
     - 8 bytes - the starting offset of data
     - 8 bytes - the length of data
     - Variable bytes - target filename
+
+```c
     /* payload in retrieve file functionality */
     struct request {
         uint32_t sessionID; /* the first 4 bytes in payload msg */
@@ -65,6 +65,7 @@ The payload will consist of the following structure:
         uint64_t start_offset; /* start offset of data*/
         uint64_t data_length; /* data range */
     };
+```
 
 **Session ID**
 
@@ -73,7 +74,7 @@ The payload will consist of the following structure:
 -  It is invalid to receive a request for a different file with the same sessionID as a currently ongoing transfer.
 
 
-## Concurrent requests using thread pool.
+## Concurrent requests using thread pool
 
 This server supports multiple connecting clients simultaneously as well as multiple simultaneous connections from the same client for increased transfer speeds.
 

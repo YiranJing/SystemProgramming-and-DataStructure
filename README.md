@@ -2,25 +2,27 @@
 👩🏻‍💻 Data Structre and Concurrent Programming (2020.03 - 2020.07)
 
 
-## Concurrency
+## Concurrency Project
 ### [**JxServer**](https://github.com/YiranJing/SystemProgramming-and-DataStructure/tree/master/JXServer)
    - Create a networked server (“JXServer”) that sends files to clients in response to requests.
    - Server supports multiple connecting clients simultaneously as well as multiple simultaneous connections from the same client for increased transfer speeds.
    - [**Huffman Coding and Compression 🌳**](https://github.com/YiranJing/SystemProgramming-and-DataStructure/tree/master/Huffman%20Coding%20and%20Compression)
       - A program that reads from a specified file, and uses Huffman coding to compress that file. 
       - Use Bitarray and Huffman Tree(binary tree)
-      
+   
+### [Multi-Level Job Scheduling](https://github.com/YiranJing/SystemProgramming-and-DataStructure/tree/master/Mutli-Level%20Job%20Scheduling)
+   - Advanced Round Robin method in uniprocessor System
+   - Stsge 1: Multi-Level Queue Dispatcher
+   - Stsge 2: Simple Memory Management
+   - Stsge 3: Swapping Strategy
+
 ### [Group Lab Exercise](https://github.com/YiranJing/SystemProgramming-and-DataStructure/tree/master/Lab%20Exercise)
    - Manage concurrent students(threads for each) to do the lab exericse. 
    - Constraints: one teacher (coordinater), and only one lab room to fit one group each time
    - Use mutex and conditional vriable to handle synchronization issue.
-***
 
-## Operationg System
-### [Multi-Level Uniprocessor Job Scheduling](https://github.com/YiranJing/SystemProgramming-and-DataStructure/tree/master/Mutli-Level%20Job%20Scheduling)
-   - Stsge 1: Multi-Level Queue Dispatcher
-   - Stsge 2: Simple Memory Management
-   - Stsge 3: Swapping Strategy
+
+***
 
 
 ## Data Structure

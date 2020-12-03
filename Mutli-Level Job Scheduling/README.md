@@ -9,30 +9,31 @@
 - [Pseudo code](https://github.com/YiranJing/SystemProgramming-and-DataStructure/blob/master/Mutli-Level%20Job%20Scheduling/Stage1/Report%20Stage%201.pdf)
 
 Usage:
-
-    $ cd Stage1
-    $ make
-    $ ./mlq <TESTFILE> # ./mlq <TESTFILE>
-
+```
+$ cd Stage1
+$ make
+$ ./mlq <TESTFILE> # ./mlq <TESTFILE>
+```
 
 ## Stage 2: Simple Memory Management
 - Add a simple **First Fit memory allocation** scheme to the multi-level queue dispatcher
 - manage memory allocation based on **memory allocation block** in a **doubly linked list**
 ![](https://paper-attachments.dropbox.com/s_B73DFD051B72E585F082377A505484F70FB98CB3927F2C7969561B4A2D9D00EB_1606953150483_Screen+Shot+2020-12-03+at+10.52.21+am.png)
-
+```c
     struct mab {
     int offset; //starting location of the block int size; //size of the block
     int allocated;//whether allocated, or free struct mab * next;
     struct mab * prev;
     };
+```
 - [Pseudo code](https://github.com/YiranJing/SystemProgramming-and-DataStructure/blob/master/Mutli-Level%20Job%20Scheduling/Stage2/Report%20Stage%202.pdf)
 
 Usage:
-
-    $ cd Stage2
-    $ make
-    $ ./mlq <TESTFILE> # ./mlq <TESTFILE>
-
+```
+$ cd Stage2
+$ make
+$ ./mlq <TESTFILE> # ./mlq <TESTFILE>
+```
 **Potential Problem**
 There we assumed that there are two types of jobs, i.e., `real-time jobs`, and `normal jobs`. Real-time jobs are given a higher priority and will be scheduled to run only if the required memory can be allocated. 
 
@@ -53,8 +54,8 @@ One way to alleviate the problem above is to **temporarily swap out some low pri
 - [Pseudo code](https://github.com/YiranJing/SystemProgramming-and-DataStructure/blob/master/Mutli-Level%20Job%20Scheduling/Stage3/Report%20Stage%203.pdf)
 
 Usage
-
-    $ cd Stage3
-    $ make
-    $ ./mlq <TESTFILE> # ./mlq <TESTFILE>
-
+```
+$ cd Stage3
+$ make
+$ ./mlq <TESTFILE> # ./mlq <TESTFILE>
+```
